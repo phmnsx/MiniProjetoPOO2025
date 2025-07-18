@@ -16,6 +16,6 @@ public class ProdutoPerecivel extends Produto {
     
     @Override
     public void printProduto(){
-        System.out.print("Produto (perecivel)" + this.codigo +": "+ this.nome + "  #" + this.estoque + "  R$ " +this.preco + " Data de Validade:" + getDataValidade().toString());
+        System.out.println("Produto (perecivel)" + this.codigo +": "+ this.nome + "  #" + this.estoque + "  R$ " +this.preco + " Data de Validade:" + getDataValidade().toString());
     }
 }
