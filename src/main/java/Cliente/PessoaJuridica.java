@@ -14,8 +14,8 @@ public class PessoaJuridica extends Cliente {
     }
 
     
-    public void setNome(String nome){
-		if (nome.trim().replaceAll("\\s+", "").equals("")){
+    public void setCNPJ(String cnpj){
+		if (cnpj.trim().replaceAll("\\s+", "").equals("")){
 			System.out.println ("CNPJ Invalido");
 			return;
 		}
