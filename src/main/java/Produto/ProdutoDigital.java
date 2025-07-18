@@ -1,5 +1,5 @@
 package Produto;
-
+import java.math.BigDecimal;
 
 public class ProdutoDigital extends Produto {
     
@@ -15,7 +15,8 @@ public class ProdutoDigital extends Produto {
     }
     
     @Override
-    public void comprar(int quantidade){
-        
+    public BigDecimal comprar(int quantidade){
+        //faz nada
+        return BigDecimal.ZERO;
     }
 }

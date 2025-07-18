@@ -50,19 +50,20 @@ public class Produto {
         this.estoque = estoque;
     }
     
-    public void getPreco(int preco){
+    public void setPreco(int preco){
         if (preco < 0){
             System.out.println("Operacao invalida, preco seria menor que 0.");
         }
         this.preco = new BigDecimal(preco);
     }
     
-    public void comprar(int quantidade){
+    public BigDecimal comprar(int quantidade){
         if(this.estoque == 0){
             System.out.println("Operação invalida, estoque e igual a 0.");
-            return;
+            return BigDecimal.ZERO;
         }
         this.estoque =- quantidade;
+        return preco.multiply(new BigDecimal(quantidade));
     }
     
     public static Produto[] getProdutosCadastrados(){
