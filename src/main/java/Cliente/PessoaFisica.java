@@ -14,7 +14,7 @@ public class PessoaFisica extends Cliente {
 	}
 	
 	public void setCPF (String cpf){
-		if (nome.trim().replaceAll("\\s+", "").equals("")){
+		if (cpf.trim().replaceAll("\\s+", "").equals("")){
 			System.out.println ("CPF Invalido");
 			return;
 		}
