@@ -18,6 +18,7 @@ public class Cliente {
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.codigo = Integer.toString(ultimoCodigo++);
+		adicionarClienteLista();
 	}
 		
 
@@ -44,6 +45,7 @@ public class Cliente {
     public void setNome(String nome){
 		if (nome.trim().replaceAll("\\s+", "").equals("")){
 			System.out.println ("Nome Invalido");
+			return;
 		}
 		this.nome = nome;
 	}
@@ -51,6 +53,7 @@ public class Cliente {
 	public void setEndereco(String Endereco){
 		if (endereco.trim().replaceAll("\\s+", "").equals("")){
 			System.out.println ("Endereco Invalido");
+			return;
 		}
 		this.endereco = endereco;
 	}
@@ -58,21 +61,18 @@ public class Cliente {
 	public void setTelefone(String telefone){
 		if (telefone.trim().replaceAll("\\s+", "").equals("")){
 			System.out.println ("Telefone Invalido");
-			
+			return;
 		}
 		this.telefone = telefone;
 	}
     
-	static public void printaListaClientes(){
+	public void printCliente(){
 		
-		for (int i =0; i <(listaClientes.length-1); i++){
-		System.out.println ("Cliente " + (i+1) + " :");
-		System.out.println ("Codigo: " + listaClientes[i].codigo);
-		System.out.println ("Nome: " + listaClientes[i].nome);
-		System.out.println ("Endereco: " + listaClientes[i].endereco);
-		System.out.println ("Telefone: " + listaClientes[i].telefone);
+		System.out.println ("Codigo: " + this.codigo);
+		System.out.println ("Nome: " + this.nome);
+		System.out.println ("Endereco: " + this.endereco);
+		System.out.println ("Telefone: " + this.telefone);
 		System.out.print ("/n/n");
-		}
 	}
 }
 
