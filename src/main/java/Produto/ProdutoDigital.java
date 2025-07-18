@@ -11,7 +11,7 @@ public class ProdutoDigital extends Produto {
     
     @Override
     public void printProduto(){
-        System.out.print("Produto (digital)" + this.codigo +": "+ this.nome + "  R$ " + this.preco);
+        System.out.println("Produto (digital)" + this.codigo +": "+ this.nome + "  R$ " + this.preco);
     }
     
     @Override

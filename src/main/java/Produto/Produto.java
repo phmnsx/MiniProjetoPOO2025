@@ -71,7 +71,14 @@ public class Produto {
     }
     
     public void printProduto(){
-        System.out.print("Produto " + this.codigo +": "+ this.nome + "  #" + this.estoque + "  R$ " + this.preco);
+        System.out.println("Produto " + this.codigo +": "+ this.nome + "  #" + this.estoque + "  R$ " + this.preco);
     }
-
+    
+    public static Produto getProdutoCodigo(int codigo){
+        for(int i = 0; i < produtosCadastrados.length; i++){
+            if(produtosCadastrados[i].codigo == codigo)
+                return produtosCadastrados[i];
+        }
+        return null;
+    }
 }
