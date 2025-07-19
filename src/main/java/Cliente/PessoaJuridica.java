@@ -9,7 +9,7 @@ public class PessoaJuridica extends Cliente {
 		this.cnpj = cnpj;
 	}
 	
-	 public String getCNPJ(){
+	public String getCNPJ(){
         return this.cnpj;
     }
 
@@ -25,7 +25,6 @@ public class PessoaJuridica extends Cliente {
 
     
 	public void printCliente(){
-		
 		System.out.println ("Codigo: " + this.codigo);
 		System.out.println ("Nome: " + this.nome);
 		System.out.println ("CNPJ: " + this.cnpj);

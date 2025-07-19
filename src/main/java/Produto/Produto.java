@@ -3,7 +3,7 @@ package Produto;
 import java.math.BigDecimal;
 public class Produto {
 
-    protected int codigo;
+    protected String codigo;
     protected String nome;
     protected BigDecimal preco;
     protected int estoque;
@@ -18,7 +18,7 @@ public class Produto {
         this.preco = new BigDecimal(preco);
         this.estoque = estoque;
         this.nome = nome;
-        this.codigo = codigosCadastrados++;
+        this.codigo = Integer.toString(codigosCadastrados++);
         adicionarProdutoLista();
     }
     
@@ -29,7 +29,7 @@ public class Produto {
         produtosCadastrados = novaLista;
     }
     
-    public int getCodigo(){
+    public String getCodigo(){
         return this.codigo;
     }
     public String getNome(){
@@ -76,7 +76,7 @@ public class Produto {
     
     public static Produto getProdutoCodigo(int codigo){
         for(int i = 0; i < produtosCadastrados.length; i++){
-            if(produtosCadastrados[i].codigo == codigo)
+            if(produtosCadastrados[i].equals(codigo))
                 return produtosCadastrados[i];
         }
         return null;
