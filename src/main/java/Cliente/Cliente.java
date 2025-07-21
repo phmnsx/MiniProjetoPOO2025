@@ -10,7 +10,7 @@ public class Cliente {
 	private static Cliente [] listaClientes;
 	
 	public Cliente (String nome, String endereco, String telefone) {
-		if ((nome.trim().replaceAll("\\s+", "").equals("")) || (endereco.trim().replaceAll("\\s+", "").equals("")) || (telefone.trim().replaceAll("\\s+", "").equals("") )){
+		if ((nome.trim().replaceAll(" ", "").equals("")) || (endereco.replaceAll(" ", "").equals("")) || (telefone.replaceAll(" ", "").equals("") )){
 		System.out.println ("Cliente Invalido");
 		return;
 	}

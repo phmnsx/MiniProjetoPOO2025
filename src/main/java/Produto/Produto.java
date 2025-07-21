@@ -50,6 +50,14 @@ public class Produto {
         this.estoque = estoque;
     }
     
+	public void setNome(String nome){
+		if (nome.replaceAll(" ", "").equals("")){
+			System.out.println ("Nome Invalido");
+			return;
+		}
+		this.nome = nome;
+    }
+    
     public void setPreco(int preco){
         if (preco < 0){
             System.out.println("Operacao invalida, preco seria menor que 0.");
