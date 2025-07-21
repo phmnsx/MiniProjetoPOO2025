@@ -22,13 +22,12 @@ public class PessoaFisica extends Cliente {
 	}
 	
 
-	public void printClientes(){
+	public void printCliente(){
 		System.out.println ("Codigo: " + this.codigo);
 		System.out.println ("Nome: " + this.nome);
 		System.out.println ("CPF: " + this.cpf);
 		System.out.println ("Endereco: " + this.endereco);
 		System.out.println ("Telefone: " + this.telefone);
-		System.out.print ("/n/n");
 	}
 }
 

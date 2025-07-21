@@ -11,6 +11,7 @@ private ItemNota[] listaProdutos;
 private String id;
 private LocalDate data;
 private static int ultimoId = 0;
+private static Nota[] notasEmitidas;
 
 	
 public Nota (Cliente pessoa){
@@ -46,8 +47,8 @@ public Nota (Cliente pessoa){
         return this.data;
     }
 
-    public void emitirNota (){
-        System.out.println ("Cliente: " + this.pessoa);
+    public void printNota (){
+        System.out.println (this.pessoa.printCliente());
         System.out.println ("Subtotal: " + this.subtotal);
         System.out.println ("ID: " + this.id);
         System.out.println("Data da compra: " + this.data);
@@ -57,5 +58,17 @@ public Nota (Cliente pessoa){
             listaProdutos[i].printItemNota();
         }
     }
+    
+     public void emitirNota (){
+		Nota [] novaLista = new Nota [notasEmitidas.length + 1];
+		System.arraycopy(notasEmitidas, 0, novaLista, 0, novaLista.length );
+		novaLista[notasEmitidas.length] = this;
+		notasEmitidas = novaLista;
+		 System.out.println ("Subtotal: " + this.subtotal);
+		System.out.println("Itens da compra: ");
+        for (int i = 0; i < listaProdutos.length; i++) {
+            listaProdutos[i].printItemNota();
+        }
+        }
+    }
 
-}

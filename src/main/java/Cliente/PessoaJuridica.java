@@ -30,7 +30,6 @@ public class PessoaJuridica extends Cliente {
 		System.out.println ("CNPJ: " + this.cnpj);
 		System.out.println ("Endereco: " + this.endereco);
 		System.out.println ("Telefone: " + this.telefone);
-		System.out.print ("/n/n");
 	}
 }
 
