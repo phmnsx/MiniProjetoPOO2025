@@ -50,12 +50,12 @@ public class Produto {
         this.estoque = estoque;
     }
     
-	public void setNome(String nome){
-		if (nome.replaceAll(" ", "").equals("")){
-			System.out.println ("Nome Invalido");
-			return;
-		}
-		this.nome = nome;
+    public void setNome(String nome){
+        if (nome.replaceAll(" ", "").equals("")){
+            System.out.println ("Nome Invalido");
+            return;
+        }
+        this.nome = nome;
     }
     
     public void setPreco(int preco){
@@ -82,9 +82,9 @@ public class Produto {
         System.out.println("Produto " + this.codigo +": "+ this.nome + "  #" + this.estoque + "  R$ " + this.preco);
     }
     
-    public static Produto getProdutoCodigo(int codigo){
+    public static Produto getProdutoCodigo(String codigo){
         for(int i = 0; i < produtosCadastrados.length; i++){
-            if(produtosCadastrados[i].equals(codigo))
+            if(produtosCadastrados[i].getCodigo().equals(codigo))
                 return produtosCadastrados[i];
         }
         return null;

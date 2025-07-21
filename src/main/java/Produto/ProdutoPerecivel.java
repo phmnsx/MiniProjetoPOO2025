@@ -14,6 +14,12 @@ public class ProdutoPerecivel extends Produto {
         return data;
     }
     
+    public void setDataValidade(int mesValidade){
+        if (mesValidade > 0){
+           this.mesValidade = mesValidade;
+        }
+    }
+    
     @Override
     public void printProduto(){
         System.out.println("Produto (perecivel)" + this.codigo +": "+ this.nome + "  #" + this.estoque + "  R$ " +this.preco + " Data de Validade:" + getDataValidade().toString());

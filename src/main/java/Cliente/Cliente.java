@@ -2,34 +2,34 @@ package Cliente;
 
 public class Cliente {
 	
-	protected String codigo;
-	protected String nome;
-	protected String endereco;
-	protected String telefone;
-	private static int ultimoCodigo = 0;
-	private static Cliente [] listaClientes;
-	
-	public Cliente (String nome, String endereco, String telefone) {
-		if ((nome.trim().replaceAll(" ", "").equals("")) || (endereco.replaceAll(" ", "").equals("")) || (telefone.replaceAll(" ", "").equals("") )){
-		System.out.println ("Cliente Invalido");
-		return;
-	}
-		this.nome = nome;
-		this.endereco = endereco;
-		this.telefone = telefone;
-		this.codigo = Integer.toString(ultimoCodigo++);
-		adicionarClienteLista();
-	}
-		
+    protected String codigo;
+    protected String nome;
+    protected String endereco;
+    protected String telefone;
+    private static int ultimoCodigo = 0;
+    private static Cliente [] listaClientes;
 
-	private void adicionarClienteLista(){
-        Cliente [] novaLista = new Cliente[listaClientes.length + 1];
-        System.arraycopy(listaClientes, 0, novaLista, 0, novaLista.length );
-        novaLista[listaClientes.length] = this;
-        listaClientes = novaLista;
-		}
+    public Cliente (String nome, String endereco, String telefone) {
+        if ((nome.trim().replaceAll(" ", "").equals("")) || (endereco.replaceAll(" ", "").equals("")) || (telefone.replaceAll(" ", "").equals("") )){
+            System.out.println ("Cliente Invalido");
+            return;
+        }
+        
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.codigo = Integer.toString(ultimoCodigo++);
+        adicionarClienteLista();
+    }
+
+    private void adicionarClienteLista(){
+    Cliente [] novaLista = new Cliente[listaClientes.length + 1];
+    System.arraycopy(listaClientes, 0, novaLista, 0, novaLista.length );
+    novaLista[listaClientes.length] = this;
+    listaClientes = novaLista;
+    }
 	
-	 public String getCodigo(){
+    public String getCodigo(){
         return this.codigo;
     }
     public String getNome(){
@@ -41,37 +41,47 @@ public class Cliente {
     public String getTelefone(){
         return this.telefone;
     }
+    public static Cliente getClienteCodigo(String codigo){
+        for(int i = 0; i < listaClientes.length; i++){
+            if(listaClientes[i].getCodigo().equals(codigo))
+                return listaClientes[i];
+        }
+        return null;
+    }
+    
+    public static Cliente [] getListaCliente(){
+        return listaClientes;
+    }
     
     public void setNome(String nome){
-		if (nome.trim().replaceAll("\\s+", "").equals("")){
-			System.out.println ("Nome Invalido");
-			return;
-		}
-		this.nome = nome;
-	}
-	
-	public void setEndereco(String Endereco){
-		if (endereco.trim().replaceAll("\\s+", "").equals("")){
-			System.out.println ("Endereco Invalido");
-			return;
-		}
-		this.endereco = endereco;
-	}
-	
-	public void setTelefone(String telefone){
-		if (telefone.trim().replaceAll("\\s+", "").equals("")){
-			System.out.println ("Telefone Invalido");
-			return;
-		}
-		this.telefone = telefone;
-	}
+        if (nome.trim().replaceAll("\\s+", "").equals("")){
+            System.out.println ("Nome Invalido");
+            return;
+        }
+        this.nome = nome;
+    }
+
+    public void setEndereco(String endereco){
+        if (endereco.trim().replaceAll("\\s+", "").equals("")){
+            System.out.println ("Endereco Invalido");
+            return;
+        }
+        this.endereco = endereco;
+    }
+
+    public void setTelefone(String telefone){
+        if (telefone.trim().replaceAll("\\s+", "").equals("")){
+            System.out.println ("Telefone Invalido");
+            return;
+        }
+        this.telefone = telefone;
+    }
     
-	public void printCliente(){
-		
-		System.out.println ("Codigo: " + this.codigo);
-		System.out.println ("Nome: " + this.nome);
-		System.out.println ("Endereco: " + this.endereco);
-		System.out.println ("Telefone: " + this.telefone);
-	}
+    public void printCliente(){	
+        System.out.println ("Codigo: " + this.codigo);
+        System.out.println ("Nome: " + this.nome);
+        System.out.println ("Endereco: " + this.endereco);
+        System.out.println ("Telefone: " + this.telefone);
+    }
 }
 

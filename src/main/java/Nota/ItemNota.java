@@ -21,8 +21,8 @@ public class ItemNota {
         System.out.println("Produto: " + produto.getNome());
         System.out.println("Codigo: " + produto.getCodigo());
         System.out.println("Quantidade: " + quantidade);
-        System.out.println("Preco unitario: " + getPrecoUnitario());
-        System.out.println("Total: " + this.subtotal);
+        System.out.println("Preco unitario: " + getPrecoTotal());
+        System.out.println("Subtotal: " + this.subtotal);
         System.out.print ("\n");
     }
 }
