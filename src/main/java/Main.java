@@ -19,7 +19,7 @@ public class Main {
             System.out.println("7 - Listar Produtos");
             System.out.println("8 - Listas Clientes");
             System.out.println("0 - Sair");
-            int opcao = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
+            opcao = Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
             
             if(opcao == 1){
                 menu.cadastrarProduto();
