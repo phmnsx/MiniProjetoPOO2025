@@ -3,13 +3,14 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 import Produto.Produto;
 import Cliente.Cliente;
+import Interfaces.*;
 
-public class Nota {
-    private Cliente pessoa;
+public class Nota implements Printable{
+    private final Cliente pessoa;
     private BigDecimal subtotal;
     private ItemNota[] listaProdutos;
-    private String id;
-    private LocalDate data;
+    private final String id;
+    private final LocalDate data;
     private static int ultimoId = 0;
     private static Nota[] notasEmitidas;
 
@@ -58,9 +59,10 @@ public class Nota {
         return notasEmitidas;
     }
 
-    public void printNota (){
+    @Override
+    public void print(){
         System.out.println("----------");
-        this.pessoa.printCliente();
+        this.pessoa.print();
         System.out.println("----------");
         System.out.println ("Total: " + this.subtotal);
         System.out.println ("ID: " + this.id);
@@ -68,7 +70,7 @@ public class Nota {
         System.out.println("Itens da compra:");
         System.out.println("----------");
         for (int i = 0; i < listaProdutos.length; i++) {
-            listaProdutos[i].printItemNota();
+            listaProdutos[i].print();
         }
     }
     
@@ -88,7 +90,7 @@ public class Nota {
 	
         
         for (int i = 0; i < listaProdutos.length; i++) {
-            listaProdutos[i].printItemNota();
+            listaProdutos[i].print();
         }
      }
 }

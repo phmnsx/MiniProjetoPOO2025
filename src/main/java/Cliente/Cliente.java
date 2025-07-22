@@ -1,8 +1,7 @@
 package Cliente;
+import Interfaces.*;
 
-import java.util.Scanner;
-
-public class Cliente {
+public abstract class Cliente implements Printable{
 	
     protected String codigo;
     protected String nome;
@@ -23,7 +22,6 @@ public class Cliente {
         this.codigo = Integer.toString(ultimoCodigo++);
         adicionarClienteLista();
     }
-
     private void adicionarClienteLista(){
         if(listaClientes == null){
             listaClientes = new Cliente[1];
@@ -83,43 +81,6 @@ public class Cliente {
             return;
         }
         this.telefone = telefone;
-    }
-    
-    public void printCliente(){	
-        System.out.println ("Codigo: " + this.codigo);
-        System.out.println ("Nome: " + this.nome);
-        System.out.println ("Endereco: " + this.endereco);
-        System.out.println ("Telefone: " + this.telefone);
-    }
-    
-    public boolean alterar (){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Que alteracao deseja?");
-        System.out.println("1- Nome\n2- Endereco\n3- Telefone");
-        int escolha = Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
-        
-        if (escolha == 1){
-            System.out.println("Coloque o novo nome: ");
-            String nome = scanner.nextLine();
-            this.setNome(nome);
-            return true;
-        } 
-        else if (escolha == 2){
-            System.out.println("Coloque o novo endereco: ");
-            String endereco = scanner.nextLine();
-            this.setEndereco(endereco);
-            return true;
-        }
-        else if (escolha == 3){
-            System.out.println("Coloque o novo telefone: ");
-            String telefone = scanner.nextLine();
-            this.setTelefone(telefone);
-            return true;
-        }	
-        else {
-            System.out.println("Erro de alteracao");
-            return false;	
-        }
     }
 }
 

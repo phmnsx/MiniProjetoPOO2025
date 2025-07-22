@@ -1,8 +1,9 @@
 package Nota;
 import java.math.BigDecimal;
 import Produto.Produto;
+import Interfaces.*;
 
-public class ItemNota {
+public class ItemNota implements Printable{
     private Produto produto;
     private int quantidade;
     private BigDecimal subtotal;
@@ -15,9 +16,9 @@ public class ItemNota {
     public BigDecimal getPrecoTotal() {
         return subtotal;
     }
-
-    public void printItemNota(){
-
+    
+    @Override
+    public void print(){
         System.out.println("Produto: " + produto.getNome());
         System.out.println("Codigo: " + produto.getCodigo());
         System.out.println("Quantidade: " + quantidade);

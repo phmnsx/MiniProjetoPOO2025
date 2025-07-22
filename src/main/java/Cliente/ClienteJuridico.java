@@ -24,7 +24,8 @@ public class ClienteJuridico extends Cliente {
         this.cnpj = cnpj;
     }
 
-    public void printCliente(){
+    @Override
+    public void print(){
         System.out.println ("Codigo: " + this.codigo);
         System.out.println ("Nome: " + this.nome);
         System.out.println ("CNPJ: " + this.cnpj);
@@ -32,41 +33,5 @@ public class ClienteJuridico extends Cliente {
         System.out.println ("Telefone: " + this.telefone);
     }
     
-    @Override
-    public boolean alterar (){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Que alteracao deseja?");
-        System.out.println("1 - Nome\n2 - Endereco\n3 - Telefone\n4 - CNPJ");
-        int escolha = Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
-        
-        if (escolha == 1){
-            System.out.println("Coloque o novo nome: ");
-            String nome = scanner.nextLine();
-            this.setNome(nome);
-            return true;
-        } 
-        else if (escolha == 2){
-            System.out.println("Coloque o novo endereco: ");
-            String endereco = scanner.nextLine();
-            this.setEndereco(endereco);
-            return true;
-        }
-        else if (escolha == 3){
-            System.out.println("Coloque o novo telefone: ");
-            String telefone = scanner.nextLine();
-            this.setTelefone(telefone);
-            return true;
-        }
-        else if (escolha == 4){
-            System.out.println("Coloque o novo CNPJ: ");
-            String cnpj = scanner.nextLine();
-            this.setCNPJ(cnpj);
-            return true;
-        }
-        else {
-            System.out.println("Erro de alteracao");
-            return false;	
-        }
-    }
 }
 
