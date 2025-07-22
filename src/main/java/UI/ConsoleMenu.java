@@ -16,81 +16,44 @@ public class ConsoleMenu {
     }
 
     public boolean cadastrarProduto (){
+        System.out.println("Qual o tipo de produto?\nPerecivel (P)\nDigital (D)\nNormal (N)");
+        String tipoProduto = this.scanner.nextLine();
+        
         System.out.println("Coloque o nome: ");
         String nome = this.scanner.nextLine();
 
         System.out.println("Coloque o preco: ");
-        int preco =  Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-
-        System.out.println("Coloque o estoque: ");
-        int estoque = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-        if(preco < 0 || estoque < 0 || nome.replaceAll(" ","").equals("")){
-            System.out.println("Produto invalido.");
-            return false;
+        float preco =  this.scanner.nextFloat();
+        this.scanner.nextLine();
+        if (!tipoProduto.equals("D")){
+            System.out.println("Coloque o estoque: ");
+            int estoque = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
+            if(preco < 0 || estoque < 0 || nome.replaceAll(" ","").equals("")){
+                System.out.println("Produto invalido.");
+                return false;
+            }
+            if(tipoProduto.equals("P")){
+                System.out.println("Digite quantos meses até a data de validade: ");
+                int mesesValidade = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
+                if (mesesValidade <= 0){
+                    System.out.println("Produto invalido.");
+                    return false;
+                }
+                ProdutoPerecivel p = new ProdutoPerecivel(nome, preco, estoque, mesesValidade);
+            }
+            else{
+                Produto p = new Produto (nome, preco, estoque);
+            }
+        
+        } else{
+            ProdutoDigital p = new ProdutoDigital(nome, preco, 0);
         }
-        Produto p = new Produto (nome, preco, estoque);
         return true;
     }
 
-    public boolean alterarProduto (Produto produto){
-        System.out.println("Que alteracao deseja?");
-        System.out.println("1- Nome\n2- Preco\n3- Estoque");
-        int escolha = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-        
-        if (escolha == 1){
-            System.out.println("Coloque o novo nome: ");
-            String nome = this.scanner.nextLine();
-            produto.setNome(nome);
-            return true;
-        } else if (escolha == 2){
-            System.out.println("Coloque o novo preco: ");
-            int preco =  Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-            produto.setPreco(preco);
-            return true;
-        }else if (escolha == 3){
-            System.out.println("Coloque o novo estoque: ");
-            int estoque =  Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-            produto.setEstoque(estoque);
-            return true;
-        }	
-        else {
-            System.out.println("Erro de alteracao");
-            return false;
-        }
-    }
-    public boolean alterarProduto (ProdutoPerecivel produto){
-        System.out.println("Que alteracao deseja?");
-        System.out.println("1- Nome\n2- Preco\n3- Estoque\n4 - Mes de Validade");
-        int escolha = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-        
-        if (escolha == 1){
-            System.out.println("Coloque o novo nome: ");
-            String nome = this.scanner.nextLine();
-            produto.setNome(nome);
-            return true;
-        } else if (escolha == 2){
-            System.out.println("Coloque o novo preco: ");
-            int preco = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-            produto.setPreco(preco);
-            return true;
-        }else if (escolha == 3){
-            System.out.println("Coloque o novo estoque: ");
-            int estoque = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-            produto.setEstoque(estoque);
-            return true;
-        }else if (escolha == 4){
-            System.out.println("Coloque a quantidade de meses até a validade: ");
-            int mesValidade = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-            produto.setDataValidade(mesValidade);
-            return true;
-        }
-        else {
-            System.out.println("Erro de alteracao");
-            return false;
-        }
-    }
-
     public boolean cadastrarCliente(){
+        System.out.println("Qual o tipo de cliente?\nPF (F)\nPJ (J)");
+        String tipoCliente = this.scanner.nextLine();
         System.out.println("Coloque o nome: ");
         String nome = this.scanner.nextLine();
 
@@ -103,8 +66,20 @@ public class ConsoleMenu {
         if ((nome.replaceAll(" ", "").equals("")) || (endereco.replaceAll(" ", "").equals("")) || (telefone.replaceAll(" ", "").equals("") )){
             System.out.println ("Cliente Invalido");
             return false;
-        } 
-        Cliente c = new Cliente (nome, endereco, telefone);
+        }
+        if(tipoCliente.equals("F")){
+            System.out.println("Coloque o CPF: ");
+            String cpf = this.scanner.nextLine();
+            ClienteFisico c = new ClienteFisico(nome, endereco, telefone, cpf);
+        }
+        else if(tipoCliente.equals("J")){
+            System.out.println("Digite o CNPJ: ");
+            String cnpj = this.scanner.nextLine();
+            ClienteJuridico c = new ClienteJuridico(nome, endereco, telefone, cnpj);
+        }
+        else{
+            Cliente c = new Cliente (nome, endereco, telefone);
+        }
         return true;
     }
 
@@ -140,6 +115,7 @@ public class ConsoleMenu {
 
     public void listarNotasEmitidas(){
         for (int i = 0; i < Nota.getListaNotas().length; i++){
+            System.out.println("----------");
             Nota.getListaNotas()[i].printNota();
             System.out.print ("\n");
         }

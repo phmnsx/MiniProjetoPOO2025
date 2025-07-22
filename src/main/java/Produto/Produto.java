@@ -1,6 +1,8 @@
 
 package Produto;
 import java.math.BigDecimal;
+import java.util.Scanner;
+
 public class Produto {
 
     protected String codigo;
@@ -8,7 +10,7 @@ public class Produto {
     protected BigDecimal preco;
     protected int estoque;
     private static int codigosCadastrados = 0;
-    private static Produto [] produtosCadastrados;
+    private static Produto [] produtosCadastrados = null;
 
     public Produto(String nome, float preco, int estoque){
         if(preco < 0 || estoque < 0 || nome.replaceAll(" ","").equals("")){
@@ -23,10 +25,16 @@ public class Produto {
     }
     
     private void adicionarProdutoLista(){
-        Produto [] novaLista = new Produto[produtosCadastrados.length + 1];
-        System.arraycopy( produtosCadastrados, 0, novaLista, 0, novaLista.length );
-        novaLista[produtosCadastrados.length] = this;
-        produtosCadastrados = novaLista;
+        if (produtosCadastrados == null){
+            produtosCadastrados = new Produto[1];
+            produtosCadastrados[0] = this;
+        }
+        else{
+            Produto [] novaLista = new Produto[produtosCadastrados.length + 1];
+            System.arraycopy(produtosCadastrados, 0, novaLista, 0, produtosCadastrados.length);
+            novaLista[produtosCadastrados.length] = this;
+            produtosCadastrados = novaLista;
+        }
     }
     
     public String getCodigo(){
@@ -89,4 +97,35 @@ public class Produto {
         }
         return null;
     }
+    
+    public boolean alterar(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Que alteracao deseja?");
+        System.out.println("1- Nome\n2- Preco\n3- Estoque");
+        int escolha = Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
+        
+        if (escolha == 1){
+            System.out.println("Coloque o novo nome: ");
+            String nome = scanner.nextLine();
+            setNome(nome);
+            return true;
+        } else if (escolha == 2){
+            System.out.println("Coloque o novo preco: ");
+            int preco =  Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
+            setPreco(preco);
+            return true;
+        }else if (escolha == 3){
+            System.out.println("Coloque o novo estoque: ");
+            int estoque =  Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
+            setEstoque(estoque);
+            return true;
+        }	
+        else {
+            System.out.println("Erro de alteracao");
+            return false;
+        }
+    }
+    
 }
+
+

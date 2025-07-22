@@ -3,7 +3,7 @@ import UI.*;
 import Produto.*;
 import Cliente.*;
         
-public class Main {
+public class AppLoja {
     public static void main (String [] args){
         Scanner scanner = new Scanner(System.in);
         ConsoleMenu menu = new ConsoleMenu(scanner);
@@ -17,7 +17,7 @@ public class Main {
             System.out.println("5 - Criar Nota");
             System.out.println("6 - Listar Notas Emitidas");
             System.out.println("7 - Listar Produtos");
-            System.out.println("8 - Listas Clientes");
+            System.out.println("8 - Listar Clientes");
             System.out.println("0 - Sair");
             opcao = Integer.parseInt((scanner.nextLine()).replaceAll(" ",""));
             
@@ -32,7 +32,7 @@ public class Main {
                     System.out.println("Produto não encontrado.");
                 }
                 else
-                menu.alterarProduto(produto);
+                produto.alterar();
             }
             if(opcao == 3)
                 menu.cadastrarCliente();
@@ -41,10 +41,10 @@ public class Main {
                 String auxiliar = scanner.nextLine();
                 Cliente cliente = Cliente.getClienteCodigo(auxiliar);
                 if(cliente == null){
-                    System.out.println("Produto não encontrado.");
+                    System.out.println("Cliente não encontrado.");
                 }
                 else
-                menu.alterarCliente(cliente);
+                cliente.alterar();
             }
             if(opcao == 5)
                 menu.criarNota();
