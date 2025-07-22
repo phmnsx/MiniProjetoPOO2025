@@ -83,36 +83,6 @@ public class ConsoleMenu {
         return true;
     }
 
-
-    public boolean alterarCliente (Cliente cliente){
-        System.out.println("Que alteracao deseja?");
-        System.out.println("1- Nome\n2- Endereco\n3- Telefone");
-        int escolha = Integer.parseInt((this.scanner.nextLine()).replaceAll(" ",""));
-        
-        if (escolha == 1){
-            System.out.println("Coloque o novo nome: ");
-            String nome = this.scanner.nextLine();
-            cliente.setNome(nome);
-            return true;
-        } 
-        else if (escolha == 2){
-            System.out.println("Coloque o novo endereco: ");
-            String endereco = this.scanner.nextLine();
-            cliente.setEndereco(endereco);
-            return true;
-        }
-        else if (escolha == 3){
-            System.out.println("Coloque o novo telefone: ");
-            String telefone = this.scanner.nextLine();
-            cliente.setTelefone(telefone);
-            return true;
-        }	
-        else {
-            System.out.println("Erro de alteracao");
-            return false;	
-        }
-    }
-
     public void listarNotasEmitidas(){
         for (int i = 0; i < Nota.getListaNotas().length; i++){
             System.out.println("----------");
