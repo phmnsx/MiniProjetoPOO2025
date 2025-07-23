@@ -168,8 +168,10 @@ public class ConsoleMenu {
             System.out.println("Lista vazia.");
             return;
         }
+        Produto produtoAtual;
         for (int i = 0; i < Produto.getProdutosCadastrados().length; i++){
-            Produto.getProdutosCadastrados()[i].print();
+            produtoAtual = Produto.getProdutosCadastrados()[i];
+            produtoAtual.print();
             System.out.print("\n");
         }
     }
@@ -179,8 +181,10 @@ public class ConsoleMenu {
             System.out.println("Lista vazia.");
             return;
         }
+        Cliente clienteAtual;
         for (int i=0; i < Cliente.getListaCliente().length; i++){
-            Cliente.getListaCliente()[i].print();
+            clienteAtual = Cliente.getListaCliente()[i];
+            clienteAtual.print();
             System.out.print("\n");
         }
     }
@@ -282,6 +286,7 @@ public class ConsoleMenu {
             produto.setPreco(Float.parseFloat(alteracao));
         }
     }
+    
     public void alterarCliente(Cliente cliente){
         if (cliente == null)
             return;
