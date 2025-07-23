@@ -8,7 +8,7 @@ import Cliente.*;
 
 public class ConsoleMenu {
 	
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public ConsoleMenu(Scanner scanner){
     this.scanner = scanner;
@@ -66,7 +66,7 @@ public class ConsoleMenu {
     }
 
     public boolean cadastrarProduto (){
-        System.out.println("Qual o tipo de produto?\nFisico (F)\nPerecivel (P)\nDigital (D)\nNormal (N)");
+        System.out.println("Qual o tipo de produto?\nFisico (F)\nPerecivel (P)\nDigital (D)");
         String tipoProduto = this.scanner.nextLine();
         
         System.out.println("Coloque o nome: ");
